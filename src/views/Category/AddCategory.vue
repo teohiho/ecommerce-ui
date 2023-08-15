@@ -32,44 +32,45 @@
 
 </template>
 <script>
-const axios = require("axios");
-const sweetalert = require("sweetalert");
-export default {
-    data() {
-        return {
-            categoryName: "",
-            description: "",
-            imageUrl: ""
-        }
-    },
-    methods: {
-        //https://limitless-lake-55070.herokuapp.com/swagger-ui.html
-        addCategory() {
-            console.log(this.categoryName, ", ", this.description, ",", this.imageUrl);
-            const newCategory = {
-                categoryName: this.categoryName,
-                description: this.description,
-                imageUrl: this.imageUrl
-            };
+    const axios = require("axios");
+    const sweetalert = require("sweetalert");
 
-            const baseUTL = "https://limitless-lake-55070.herokuapp.com";
-            axios({
-                method: 'post',
-                url: `${baseUTL}/category/create`,
-                data: JSON.stringify(newCategory),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(() => {
-                sweetalert({
-                    text: 'Categor added successfully',
-                    icon: 'success',
+    export default {
+        data() {
+            return {
+                categoryName: "",
+                description: "",
+                imageUrl: ""
+            }
+        },
+        methods: {
+            //https://limitless-lake-55070.herokuapp.com/swagger-ui.html
+            addCategory() {
+                console.log(this.categoryName, ", ", this.description, ",", this.imageUrl);
+                const newCategory = {
+                    categoryName: this.categoryName,
+                    description: this.description,
+                    imageUrl: this.imageUrl
+                };
+
+                const baseUTL = "https://limitless-lake-55070.herokuapp.com";
+                axios({
+                    method: 'post',
+                    url: `${baseUTL}/category/create`,
+                    data: JSON.stringify(newCategory),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(() => {
+                    sweetalert({
+                        text: 'Categor added successfully',
+                        icon: 'success',
+                    })
+                }).catch(err => {
+                    console.log(err);
                 })
-            }).catch(err => {
-                console.log(err);
-            })
-        }   
-    },
-}
+            }   
+        },
+    }
 </script>
 <style scoped></style>

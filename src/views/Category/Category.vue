@@ -22,34 +22,25 @@
 
 </template>
 <script>
-const axios = require("axios");
-// const sweetalert = require("sweetalert");
-import CategoryBox from '../../components/Category/CategoryBox.vue'
-export default {
-    name: "Category",
-    components: {
-        CategoryBox
-    },
+    import CategoryBox from '../../components/Category/CategoryBox.vue'
 
-    data() {
-        return {
-            baseUTL: "https://limitless-lake-55070.herokuapp.com",
-            categories: []
-        }
-    },
-    methods: {
-      async getCategories(){
-        await axios.get(`${this.baseUTL}/category/`)
-        .then(res => {
-            this.categories = res.data
-        }).catch(err => {
-            console.log(err)
-        })
-      }
-    },
-    mounted() {
-        this.getCategories();
-    },
-}
+    export default {
+        name: "Category",
+        props: ["categories"],
+        components: {
+            CategoryBox
+        },
+        data() {
+            return {
+                baseUTL: "https://limitless-lake-55070.herokuapp.com",
+            }
+        },
+        methods: {
+        
+        },
+        mounted() {
+            //this.getCategories();
+        },
+    }
 </script>
 <style scoped></style>

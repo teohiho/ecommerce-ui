@@ -23,8 +23,8 @@ export default {
   data() {
     return {
       baseUrl: "https://limitless-lake-55070.herokuapp.com",
-      products: [],
-      categories: []
+      products: null,
+      categories: null
     }
   },
   methods: {

@@ -3,16 +3,18 @@
         <div class="embeb-responsive embeb-responsive-16by9">
             <img 
                 class="card-img-top embeb-responsive-item"
-                :src="product.imageUrl"
+                :src="product.imageURL"
                 alt="Card image cap"
             />
         </div>
         <div class="card-body">
-            <h5 class="card-title">{{ product.productName }}</h5>
+            <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text">
                 {{ this.product.description ? this.product.description.substring(0, 65) : '' }} ...
             </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <router-link :to="{name: 'EditProductPage', params: {id: product.id}}">
+                <a href="#" class="btn btn-primary">Edit</a>
+            </router-link>
         </div>
     </div>
 </template>

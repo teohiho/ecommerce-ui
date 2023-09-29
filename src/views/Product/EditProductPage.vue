@@ -2,30 +2,35 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h4 class="pt-3">Edit Category</h4>
+                <h4 class="pt-3">Edit Product</h4>
             </div>
         </div>
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
-                <form v-if="category">
+                <form v-if="product">
                     <div class="form-group">
-                        <label>Category Name</label>
+                        <label>Product Name</label>
                         <input type="text" class="form-control"
-                            v-model="category.categoryName" required />
+                            v-model="product.name" required />
                     </div>
                     <div class="form-group">
                         <label>Description</label>
                         <input type="text" class="form-control"
-                            v-model="category.description" required />
+                            v-model="product.description" required />
                     </div>
                     <div class="form-group">
                         <label>Image Url</label>
                         <input type="text" class="form-control"
-                            v-model="category.imageUrl" required />
+                            v-model="product.imageURL" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="text" class="form-control"
+                            v-model="product.price" required />
                     </div>
                     <button type="button" class="btn btn-primary"
-                        @click="editCategory">Submit</button>
+                        @click="editProduct">Submit</button>
                 </form>
             </div>
             <div class="col-3"></div>
@@ -40,25 +45,26 @@
     export default {
         data() {
             return {
-                category: null,
+                product: null,
                 id: null
             }
         },
-        props: ["baseUrl", "categories"],
+        props: ["baseUrl", "products"],
         methods: {
-            async editCategory() {
-                delete this.category['products'];
-                console.log("this.categories: "); console.log(this.category)
-                console.log(`${this.baseUrl}/category/update/${this.id}`)
-                await axios.post(`${this.baseUrl}/category/update/${this.id}`, this.category)
+            async editProduct() {
+                //delete this.product['products'];
+                console.log("this.product: "); console.log(this.product)
+                console.log(`${this.baseUrl}/product/update/${this.id}`)
+                await axios.post(`${this.baseUrl}/product/update/${this.id}`, this.product)
                 .then(() => {
+                    console.log("successfully")
                     this.$emit("fetchData");
-                    this.$router.push({name: 'CategoryPage'})
-
+                    this.$router.push({name: 'ProductPage'})
+                    console.log("successfully 1")
                     sweetalert({
-                        text: 'Category edited successfully',
+                        text: 'Product edited successfully',
                         icon: 'success',
-                    })
+                    })  
                 })
                 .catch(err => {
                     console.log("err:", err, )
@@ -67,7 +73,7 @@
         },
         mounted() {
             this.id = this.$route.params.id;    
-            this.category = this.categories.find(category => category.id == this.id);
+            this.product = this.products.find(product => product.id == this.id);
         },
     };
 </script>

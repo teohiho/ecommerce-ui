@@ -65,10 +65,10 @@
               <!-- <router-link class="dropdown-item" :to="{ name: 'Home' }"
                 >Home</router-link
               > -->
-              <router-link class="dropdown-item" :to="{ name: 'Product' }"
+              <router-link class="dropdown-item" :to="{ name: 'ProductPage' }"
                 >Product</router-link
               >
-              <router-link class="dropdown-item" :to="{ name: 'Category' }"
+              <router-link class="dropdown-item" :to="{ name: 'CategoryPage' }"
                 >Category</router-link
               >
             </div>
@@ -87,7 +87,7 @@
               Accounts
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <router-link class="dropdown-item" :to="{ name: 'Admin' }">
+                <router-link class="dropdown-item" :to="{ name: 'AdminPage' }">
                     Admin
                 </router-link>
             </div>
@@ -103,7 +103,7 @@
   
   <script>
   export default {
- 
+    name: 'Navbar',
   };
   </script>
   

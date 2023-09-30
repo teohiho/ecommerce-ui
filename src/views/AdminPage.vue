@@ -1,10 +1,10 @@
 <template>
     <div>
-        <router-link :to="{name: 'Category'}">
+        <router-link :to="{name: 'CategoryPage'}">
             <button type="button" class="btn btn-primary btn-lg">Admin Category</button>
         </router-link>
         <br />
-        <router-link :to="{name: 'Product'}">
+        <router-link :to="{name: 'ProductPage'}">
             <button type="button" class="btn btn-primary btn-lg">Admin Product</button>
         </router-link>
     </div>

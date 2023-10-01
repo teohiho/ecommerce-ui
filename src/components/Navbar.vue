@@ -2,7 +2,10 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <!--    Logo-->
         <!-- <img id="logo" height="10" width="5" src="../assets/maruko_conan_border_icon.png" /> -->
-        <h4 style="color: white;">Teo Shop</h4>
+        
+        <router-link :to="{ name: 'HomePage' }">
+          <h4 style="color: white;">Teo Shop</h4>
+        </router-link>
       <!--    Burger Button-->
       <button
         class="navbar-toggler"

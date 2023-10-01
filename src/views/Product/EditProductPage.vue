@@ -10,6 +10,18 @@
             <div class="col-6">
                 <form v-if="product">
                     <div class="form-group">
+                        <label>Category</label>
+                        <select class="form-control" v-model="product.categoryId" required>
+                            <option 
+                                v-for="category of categories"
+                                :key="category.id"
+                                :value="category.id"
+                            >
+                                {{ category.categoryName }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>Product Name</label>
                         <input type="text" class="form-control"
                             v-model="product.name" required />
@@ -49,10 +61,9 @@
                 id: null
             }
         },
-        props: ["baseUrl", "products"],
+        props: ["baseUrl", "categories", "products"],
         methods: {
             async editProduct() {
-                //delete this.product['products'];
                 console.log("this.product: "); console.log(this.product)
                 console.log(`${this.baseUrl}/product/update/${this.id}`)
                 await axios.post(`${this.baseUrl}/product/update/${this.id}`, this.product)

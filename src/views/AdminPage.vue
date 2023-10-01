@@ -12,9 +12,24 @@
 
 <script>
 export default {
+  name: 'AdminPage',
+  props: ["categories"],
+  components: {
     
+  },
+  date() {
+    return {
+      categorySize: 0
+    }
+  },
+  mounted() {
+    // this.categorySize = Math.min(6, this.categories);
+    console.log("Category Page: ", this.categories);
+  },
+
 }
 </script>
+
 <style>
     .btn {
         margin-bottom: 20px;

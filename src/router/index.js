@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomePage from '../views/HomePage.vue'
 import AddCategory from '../views/Category/AddCategory.vue'
 import EditCategory from '../views/Category/EditCategory.vue'
 import CategoryPage from '../views/Category/CategoryPage.vue'
@@ -12,8 +12,8 @@ import EditProductPage from '../views/Product/EditProductPage.vue'
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'HomePage',
+    component: HomePage
   },
   {
     path: '/about',

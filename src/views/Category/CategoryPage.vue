@@ -16,10 +16,8 @@
             >
                 <CategoryBox :category="category"></CategoryBox>
             </div>
-            
         </div>
     </div>
-
 </template>
 <script>
     import CategoryBox from '../../components/Category/CategoryBox.vue'
@@ -40,6 +38,7 @@
         },
         mounted() {
             //this.getCategories();
+            console.log("Category Page: ", this.categories);
         },
     }
 </script>

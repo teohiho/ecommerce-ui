@@ -1,25 +1,35 @@
 <template>
   <Navbar></Navbar>
-  <div id="nav">
+  <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
-  </div>
+  </div> -->
   <router-view
+  v-if="categories && products"
   :baseUrl = "baseUrl"
   :categories = "categories"
   :products = "products"
   @fetchData = "fetchData"
-  ></router-view>
+  >
+  </router-view>
+
+  <router-view>
+    <!-- footer -->
+    <Footer></Footer>
+  </router-view>
   
+
 </template>
 
 <script>
 const axios = require("axios");
 import Navbar from "./components/Navbar.vue";
+import Footer from './components/Footer.vue'
 
 export default {
   components: {
-    Navbar
+    Navbar,
+    Footer
   },
   data() {
     return {

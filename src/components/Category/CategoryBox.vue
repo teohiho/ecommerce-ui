@@ -11,7 +11,9 @@
             <p class="card-text">
                 {{ category.description }}
             </p>
-            <router-link :to="{name: 'EditCategory', params: {id: category.id}}">
+            <router-link :to="{name: 'EditCategory', params: {id: category.id}}"
+                v-show="$route.name == 'CategoryPage'"
+            >
                 <a href="#" class="btn btn-primary">Edit</a>
             </router-link>
             

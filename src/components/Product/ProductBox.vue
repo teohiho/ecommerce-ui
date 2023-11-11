@@ -12,7 +12,9 @@
             <p class="card-text">
                 {{ this.product.description ? this.product.description.substring(0, 65) : '' }} ...
             </p>
-            <router-link :to="{name: 'EditProductPage', params: {id: product.id}}">
+
+            <router-link :to="{name: 'EditProductPage', params: {id: product.id}}"
+                v-show="$route.name == 'ProductPage'">
                 <a href="#" class="btn btn-primary">Edit</a>
             </router-link>
         </div>

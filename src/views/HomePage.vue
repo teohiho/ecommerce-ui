@@ -12,6 +12,7 @@
         </div>
       </div>
 
+
       <!-- Display Categories -->
       <div class="container">
         <div class="row">
@@ -21,35 +22,98 @@
             </h2>
           </div>
         </div>
+
+        <!-- display products -->
         <div class="row">
-          <div v-for="index in this.categorySize"
+          <div v-for="index in productSize"
             :key="index"
             class="col-md-6 col-xl-4 col-12 pt-3 justify-content-around d-flex">
-            <!-- <CategoryBox :category="categories[index-1]" ></CategoryBox> -->
+            <ProductBox :product="lstProduct[index-1]" ></ProductBox>
           </div>
         </div>
+
+        <!-- display categories -->
+        <div class="row">
+          <div v-for="index in categorySize"
+            :key="index"
+            class="col-md-6 col-xl-4 col-12 pt-3 justify-content-around d-flex">
+            <CategoryBox :category="lstCategory[index-1]" ></CategoryBox>
+          </div>
+        </div>
+      </div>
+
+      <!-- Display Product -->
+      <div class="container py-2">
+        <div class="row">
+          <div class="col-12 text-left">
+            <h2 class="pt-3">
+              Top Products
+            </h2>
+          </div>
+        </div>
+
+        <!-- display products -->
+        <div class="row">
+          <div v-for="index in productSize"
+            :key="index"
+            class="col-md-6 col-xl-4 col-12 pt-3 justify-content-around d-flex">
+            <ProductBox :product="lstProduct[index-1]" ></ProductBox>
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import CategoryBox from "../components/Category/CategoryBox";
+import CategoryBox from "../components/Category/CategoryBox.vue";
+import ProductBox from "../components/Product/ProductBox.vue";
+
+const axios = require("axios");
 
 export default {
   name: 'HomePage',
-  props: ["categories"],
+  props: ["categories", "products"],
   components: {
-    // CategoryBox
+    CategoryBox,
+    ProductBox
   },
-  date() {
+  data() {
     return {
-      categorySize: 0
+      baseUrl: "https://limitless-lake-55070.herokuapp.com",
+      categorySize: 0,
+      lstCategory: null,
+      productSize: 0,
+      lstProduct: null
     }
   },
   mounted() {
     // this.categorySize = Math.min(6, this.categories);
-    console.log("Category Page: ", this.categories);
+    
+    axios.get(this.baseUrl + "/category/")
+      .then(res => {
+        console.log("res")
+        console.log(res.data)
+        this.lstCategory = res.data;
+        console.log("Category Page: ", this.lstCategory.length);
+        this.categorySize = Math.min(6, this.lstCategory.length);
+        console.log("App.js this.categories")
+      
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
+    axios.get(this.baseUrl + "/product/")
+      .then(res => {
+        this.lstProduct = res.data;
+        console.log("Product Page: ", this.lstProduct.length);
+        this.productSize = Math.min(6, this.lstProduct.length);
+      })
+      .catch(err => {
+        console.log(err);
+      })
   },
 
 }
